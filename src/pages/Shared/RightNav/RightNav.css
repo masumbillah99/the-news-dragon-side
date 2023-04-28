@@ -1,0 +1,9 @@
+.pointer {
+    cursor: pointer;
+}
+
+.learn-part {
+    background-image: url("../../../assets/bg.png");
+    background-position: center;
+    height: 509px;
+}
