@@ -28,19 +28,34 @@ const RightNav = () => {
       <div className="my-5">
         <h4 className="mb-3">Find us on</h4>
         <ListGroup>
-          <ListGroup.Item className="fw-semibold pointer">
+          <ListGroup.Item
+            action
+            href="https://www.facebook.com/profile.php?id=100036766350727"
+            target="_blank"
+            className="fw-semibold pointer"
+          >
             <span className="bg-secondary bg-opacity-10 rounded-circle px-2 py-1 me-2">
               <FaFacebookF />
             </span>
             Facebook
           </ListGroup.Item>
-          <ListGroup.Item className="fw-semibold pointer">
+          <ListGroup.Item
+            action
+            href="https://twitter.com/masumbillah_99"
+            target="_blank"
+            className="fw-semibold pointer"
+          >
             <span className="bg-secondary bg-opacity-10 rounded-circle ps-2 py-1 me-2">
               <FaTwitter className="me-2" />
             </span>
             Twitter
           </ListGroup.Item>
-          <ListGroup.Item className="fw-semibold pointer">
+          <ListGroup.Item
+            action
+            href="https://www.youtube.com/@awebtutor9986"
+            target="_blank"
+            className="fw-semibold pointer"
+          >
             <span className="bg-secondary bg-opacity-10 rounded-circle ps-2 py-1 me-2">
               <FaYoutube className="me-2" />
             </span>
