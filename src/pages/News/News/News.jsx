@@ -1,25 +1,26 @@
 import React from "react";
-import { Card } from "react-bootstrap";
-import { useLoaderData } from "react-router-dom";
+import { Button, Card } from "react-bootstrap";
+import { Link, useLoaderData } from "react-router-dom";
+import EditorInsight from "../EditorInsight/EditorInsight";
 
 const News = () => {
   const news = useLoaderData();
-  console.log(news);
-  // const { _id, title, author, details, image_url, total_view, rating } = news;
+  const { _id, title, details, image_url, category_id } = news;
 
   return (
-    <>
-      {
-        news.map(n => console.log(n))
-      }
-      {/* <Card>
+    <div>
+      <Card>
         <Card.Img variant="top" src={image_url} />
         <Card.Body>
           <Card.Title>{title}</Card.Title>
           <Card.Text>{details}</Card.Text>
+          <Link to={`/category/${category_id}`}>
+            <Button variant="danger">All News in this category</Button>
+          </Link>
         </Card.Body>
-      </Card> */}
-    </>
+      </Card>
+      <EditorInsight></EditorInsight>
+    </div>
   );
 };
 

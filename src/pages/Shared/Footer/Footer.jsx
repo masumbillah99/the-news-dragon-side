@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <div>
       <p>
-        <small>copyright of my news site</small>
+        <small></small>
       </p>
     </div>
   );

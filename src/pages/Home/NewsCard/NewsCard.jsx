@@ -40,7 +40,7 @@ const NewsCard = ({ news }) => {
               <>{details}</>
             ) : (
               <>
-                {details.slice(0, 250)}...{" "}
+                {details?.slice(0, 250)}...{" "}
                 <Link className="text-decoration-none text-warning" to={`/news/${_id}`}>
                   Read More
                 </Link>

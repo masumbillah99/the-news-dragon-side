@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { UserCircleIcon } from "@heroicons/react/24/solid";
 import "./Header.css";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -31,16 +32,30 @@ const Header = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto fs-5">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#about">About</Nav.Link>
-              <Nav.Link href="#career">Career</Nav.Link>
+              <Link className="text-decoration-none text-secondary" to="/">
+                Home
+              </Link>
+              <Link
+                className="text-decoration-none text-secondary mx-3"
+                to="/about"
+              >
+                About
+              </Link>
+              <Link
+                className="text-decoration-none text-secondary"
+                to="/career"
+              >
+                Career
+              </Link>
             </Nav>
             <Nav className="ms-auto">
               <Nav.Link href="#profile">
                 <UserCircleIcon className="user-icon" />
               </Nav.Link>
               <Nav.Link href="#login">
-                <Button className="px-4" variant="secondary">Login</Button>
+                <Button className="px-4" variant="secondary">
+                  Login
+                </Button>
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
