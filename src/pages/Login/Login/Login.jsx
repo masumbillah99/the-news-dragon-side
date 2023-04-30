@@ -1,11 +1,12 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button, Container, Form } from "react-bootstrap";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 const Login = () => {
   const { signInUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const [error, setError] = useState("");
   const [show, setShow] = useState(false);
@@ -20,6 +21,7 @@ const Login = () => {
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
+        navigate("/category/0");
       })
       .catch((err) => {
         setError(err.message);

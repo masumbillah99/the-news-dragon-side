@@ -1,11 +1,11 @@
 import React, { useContext, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { Button, Container, Form } from "react-bootstrap";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 const Register = () => {
-  const { user, RegisterUser } = useContext(AuthContext);
+  const { user, registerUser } = useContext(AuthContext);
 
   const [error, setError] = useState("");
   const [show, setShow] = useState(false);
@@ -26,16 +26,15 @@ const Register = () => {
     } else if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       setError("email is not valid");
     }
-    if ((name, photo, email, password)) {
-      RegisterUser(email, password)
-        .then((result) => {
-          const loggedUser = result.user;
-          console.log(loggedUser);
-        })
-        .catch((err) => {
-          setError(err.message);
-        });
-    }
+
+    registerUser(email, password)
+      .then((result) => {
+        const createdUser = result.user;
+        console.log(createdUser);
+      })
+      .catch((err) => {
+        setError(err.message);
+      });
   };
 
   return (

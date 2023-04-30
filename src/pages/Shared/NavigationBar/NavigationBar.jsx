@@ -1,20 +1,27 @@
 import React from "react";
-import { Container, Nav, Navbar } from "react-bootstrap";
+import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { UserCircleIcon } from "@heroicons/react/24/solid";
 
 const NavigationBar = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOutUser } = useContext(AuthContext);
+
+  // handle sign out user
+  const handleLogOut = () => {
+    logOutUser()
+      .then()
+      .catch((err) => console.log(err));
+  };
 
   return (
     <div>
       <Navbar expand="lg" className="mb-5">
         <Container>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ms-auto fs-5 my-3 my-lg-0">
+          <Navbar.Collapse id="basic-navbar-nav" className="text-center">
+            <Nav className="ms-lg-auto fs-5 my-3 my-lg-0">
               <Link
                 className="text-decoration-none text-secondary"
                 to="/category/0"
@@ -34,17 +41,22 @@ const NavigationBar = () => {
                 Career
               </Link>
             </Nav>
-            <Nav className="ms-auto">
+            <Nav className="ms-lg-auto">
               {user && (
-                <UserCircleIcon style={{ width: "2rem", marginRight: "7px" }} />
+                <span className="mx-auto mb-3 mb-lg-0">
+                  <UserCircleIcon
+                    style={{ width: "2rem", marginRight: "7px" }}
+                  />
+                </span>
               )}
               {user ? (
-                <Link
-                  className="btn btn-secondary px-4 text-white text-decoration-none"
-                  to="/login"
+                <Button
+                  onClick={handleLogOut}
+                  className="px-4"
+                  variant="secondary"
                 >
                   Logout
-                </Link>
+                </Button>
               ) : (
                 <Link
                   className="btn btn-success px-4 text-white text-decoration-none"
