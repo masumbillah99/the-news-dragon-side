@@ -6,9 +6,9 @@ import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 const Register = () => {
   const { user, registerUser } = useContext(AuthContext);
-
   const [error, setError] = useState("");
   const [show, setShow] = useState(false);
+  const [accepted, setAccepted] = useState(false);
 
   const handleRegistration = (event) => {
     event.preventDefault();
@@ -35,6 +35,10 @@ const Register = () => {
       .catch((err) => {
         setError(err.message);
       });
+  };
+
+  const handleAccepted = (event) => {
+    setAccepted(event.target.checked);
   };
 
   return (
@@ -72,15 +76,18 @@ const Register = () => {
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label className="fw-semibold">Password</Form.Label>
-          <div className="d-flex bg-secondary bg-opacity-10 pe-3 py-2 rounded">
+          <div className="d-flex">
             <Form.Control
-              className="border-0"
+              className="bg-secondary bg-opacity-10 p-3 border-0 rounded-start rounded-0"
               type={show ? "text" : "password"}
               name="password"
               placeholder="Enter your password"
               required
             />
-            <p onClick={() => setShow(!show)}>
+            <p
+              className="bg-secondary bg-opacity-10 p-3 my-auto rounded-end"
+              onClick={() => setShow(!show)}
+            >
               <small>
                 {show ? (
                   <span>
@@ -96,12 +103,25 @@ const Register = () => {
           </div>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Accept terms and conditions" />
+          <Form.Check
+            onClick={handleAccepted}
+            type="checkbox"
+            name="accept"
+            label={
+              <>
+                Accept{" "}
+                <Link to="/terms" className="text-danger">
+                  terms and conditions
+                </Link>
+              </>
+            }
+          />
         </Form.Group>
         <Button
           variant="secondary"
           className="w-100 py-2 fw-semibold mb-2"
           type="submit"
+          disabled={!accepted}
         >
           Register
         </Button>
