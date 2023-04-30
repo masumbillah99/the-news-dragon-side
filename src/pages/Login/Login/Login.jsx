@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button, Container, Form } from "react-bootstrap";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
@@ -7,6 +7,9 @@ import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 const Login = () => {
   const { signInUser } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
+  console.log("login page", location);
+  const from = location.state?.from?.pathname || "/category/0";
 
   const [error, setError] = useState("");
   const [show, setShow] = useState(false);
@@ -21,7 +24,7 @@ const Login = () => {
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
-        navigate("/category/0");
+        navigate(from, { replace: true });
       })
       .catch((err) => {
         setError(err.message);
@@ -45,15 +48,18 @@ const Login = () => {
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label className="fw-semibold">Password</Form.Label>
-          <div className="d-flex bg-secondary bg-opacity-10 pe-3 py-2 rounded">
+          <div className="d-flex">
             <Form.Control
-              className="border-0"
+              className="bg-secondary bg-opacity-10 p-3 border-0 rounded-start rounded-0"
               type={show ? "text" : "password"}
               name="password"
               placeholder="Enter your password"
               required
             />
-            <p onClick={() => setShow(!show)}>
+            <p
+              className="bg-secondary bg-opacity-10 p-3 my-auto rounded-end"
+              onClick={() => setShow(!show)}
+            >
               <small>
                 {show ? (
                   <span>

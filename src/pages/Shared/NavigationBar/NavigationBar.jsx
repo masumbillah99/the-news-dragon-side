@@ -43,7 +43,7 @@ const NavigationBar = () => {
             </Nav>
             <Nav className="ms-lg-auto">
               {user && (
-                <span className="mx-auto mb-3 mb-lg-0">
+                <span className="mx-auto pt-2 mb-3 mb-lg-0">
                   <UserCircleIcon
                     style={{ width: "2rem", marginRight: "7px" }}
                   />
