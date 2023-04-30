@@ -4,7 +4,7 @@ import NavigationBar from "../pages/Shared/NavigationBar/NavigationBar";
 
 const LoginLayout = () => {
   return (
-    <div className="bg-secondary bg-opacity-10 py-5 vh-100">
+    <div className="bg-secondary bg-opacity-10 py-5 min-vh-100">
       <NavigationBar />
       <Outlet />
     </div>

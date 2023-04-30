@@ -14,7 +14,7 @@ const NavigationBar = () => {
         <Container>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ms-auto fs-5">
+            <Nav className="ms-auto fs-5 my-3 my-lg-0">
               <Link
                 className="text-decoration-none text-secondary"
                 to="/category/0"
@@ -22,7 +22,7 @@ const NavigationBar = () => {
                 Home
               </Link>
               <Link
-                className="text-decoration-none text-secondary mx-3"
+                className="text-decoration-none text-secondary my-3 my-lg-0 mx-lg-3"
                 to="/about"
               >
                 About
