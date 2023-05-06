@@ -3,16 +3,17 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button, Container, Form } from "react-bootstrap";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import useTitle from "../../../hooks/useTitle";
 
 const Login = () => {
   const { signInUser } = useContext(AuthContext);
   const navigate = useNavigate();
-  const location = useLocation();
-  // console.log("login page", location);
-  const from = location.state?.from?.pathname || "/category/0";
-
   const [error, setError] = useState("");
   const [show, setShow] = useState(false);
+  useTitle("Login");
+
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/category/0";
 
   const handleLogin = (event) => {
     event.preventDefault();

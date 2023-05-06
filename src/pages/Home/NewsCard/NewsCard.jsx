@@ -1,5 +1,6 @@
 import moment from "moment";
 import React from "react";
+import { Link } from "react-router-dom";
 import { Button, Image } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import {
@@ -9,11 +10,13 @@ import {
   FaShareAlt,
   FaStar,
 } from "react-icons/fa";
-import Rating from "react-rating";
-import { Link } from "react-router-dom";
+import { Rating } from "@smastrom/react-rating";
+import "@smastrom/react-rating/style.css";
+import useTitle from "../../../hooks/useTitle";
 
 const NewsCard = ({ news }) => {
   const { _id, title, author, details, image_url, total_view, rating } = news;
+  useTitle("News Details");
 
   return (
     <div>
@@ -41,7 +44,10 @@ const NewsCard = ({ news }) => {
             ) : (
               <>
                 {details?.slice(0, 250)}...{" "}
-                <Link className="text-decoration-none text-warning" to={`/news/${_id}`}>
+                <Link
+                  className="text-decoration-none text-warning"
+                  to={`/news/${_id}`}
+                >
                   Read More
                 </Link>
               </>
@@ -49,14 +55,12 @@ const NewsCard = ({ news }) => {
           </Card.Text>
         </Card.Body>
         <Card.Footer className="text-secondary d-flex">
-          <div className="flex-grow-1">
+          <div className="d-flex gap-3 flex-grow-1">
             <Rating
-              readonly
-              placeholderRating={rating?.number}
-              emptySymbol={<FaRegStar />}
-              placeholderSymbol={<FaStar className="text-warning" />}
-              fullSymbol={<FaStar />}
-            ></Rating>
+              style={{ maxWidth: 100 }}
+              value={Math.round(rating?.number || 0)}
+              readOnly
+            />
             <span className="ms-2">{rating?.number}</span>
           </div>
           <div>
